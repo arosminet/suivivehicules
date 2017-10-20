@@ -10,6 +10,7 @@ const maxValue = max => value =>
 export const BH347HG_IList = (props) => (
     <List {...props}>
         <Datagrid>
+        <ImageField source="src" title="title" />
             <TextField source="immatriculation" />
             <ImageField source="src" title="title" />
             <TextField source="marque" />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Admin, Resource, Delete } from 'admin-on-rest';
 import { RestClient, AuthClient } from 'aor-firebase-client';
+import addUploadFeature from './addUploadFeature';
 import { VoituresList, VoituresCreate, VoituresEdit, VoituresShow } from './journaliers/voitures';
 import { UserList } from './users';
 import { SuiviList, SuiviCreate, SuiviEdit } from './suivi';
@@ -22,7 +23,7 @@ const trackedResources = ['IBH347HG','QBH347HG','JBH347HG','journaliers'/'voitur
 
 
 const App = () => (
-    <Admin restClient={RestClient(trackedResources, firebaseConfig)} authClient={AuthClient}>
+    <Admin restClient={addUploadFeature(RestClient(trackedResources, firebaseConfig))} authClient={AuthClient}>
         {permissions => [
       permissions === 'admin' ?   <Resource name="suivi" list={SuiviList} create={SuiviCreate} edit={SuiviEdit} remove={Delete} /> : null,
         permissions === 'admin' ?<Resource name="suivi1" list={SuiviList1} create={SuiviCreate1} edit={SuiviEdit1} remove={Delete}/> : null,
@@ -35,7 +36,7 @@ const App = () => (
         	remove={permissions === 'admin' ? Delete : null} /> ,
 <Resource name="IBH347HG" 
         	list={permissions === 'admin' ? BH347HG_IList : null} 
-create={BH347HG_ICreate}
+            create={BH347HG_ICreate}
             show={BH347HG_IShow}
         	edit={permissions === 'admin' ? BH347HG_IEdit : null}  
         	remove={permissions === 'admin' ? Delete : null} /> ,
