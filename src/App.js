@@ -4,7 +4,7 @@ import { Admin, Resource, Delete } from 'admin-on-rest';
 import { RestClient, AuthClient } from 'aor-firebase-client';
 import { BH347HG_JList,BH347HG_JShow,BH347HG_JCreate,BH347HG_JEdit} from './JBH347HG';
 import { BH347HG_QList,BH347HG_QShow,BH347HG_QCreate,BH347HG_QEdit} from './QBH347HG';
-
+import { BH347HG_IList,BH347HG_IShow,BH347HG_ICreate,BH347HG_IEdit} from './IBH347HG';
 const firebaseConfig = {
     apiKey: "AIzaSyClcAEcI_bh-MHIANRna6x48GmQVDOODA0",
     authDomain: "vehiculesuivi.firebaseapp.com",
@@ -14,7 +14,7 @@ const firebaseConfig = {
     messagingSenderId: "758673047770"
 };
 
-const trackedResources = ['QBH347HG','JBH347HG','users1']
+const trackedResources = ['IBH347HG','QBH347HG','JBH347HG','users1']
 
 
 const App = () => (
@@ -33,7 +33,12 @@ create={BH347HG_JCreate}
             show={BH347HG_JShow}
         	edit={permissions === 'admin' ? BH347HG_JEdit : null}  
         	remove={permissions === 'admin' ? Delete : null} /> ,
-    	
+<Resource name="IBH347HG" 
+        	list={permissions === 'admin' ? BH347HG_IList : null} 
+create={BH347HG_ICreate}
+            show={BH347HG_IShow}
+        	edit={permissions === 'admin' ? BH347HG_IEdit : null}  
+        	remove={permissions === 'admin' ? Delete : null} /> ,    	
     	]}
     </Admin>
 );

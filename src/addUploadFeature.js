@@ -17,7 +17,7 @@ const newPictures = params.data.pictures.filter(p => p.rawFile instanceof File);
  * the `picture` sent property, with `src` and `title` attributes.
  */
 const addUploadCapabilities = requestHandler => (type, resource, params) => {
-  if ((type === 'UPDATE' || type === 'CREATE') && resource === 'QBH347HG') {
+  if ((type === 'UPDATE' || type === 'CREATE') && resource === 'IBH347HG') {
         if (params.data.pictures && params.data.pictures.length) {
             // only freshly dropped pictures are instance of File
             const formerPictures = params.data.pictures.filter(p => !(p instanceof File));
