@@ -10,11 +10,13 @@ const maxValue = max => value =>
 export const BH347HG_QList = (props) => (
     <List {...props}>
         <Datagrid>
+            <DateField source="Date ajout" />
             <TextField source="immatriculation" />
-            <ImageField source="src" title="title" />
-            <TextField source="marque" />
-            <TextField source="model" />
+            <TextField source="Nom" />
+            <TextField source="Prenom" />
             <NumberField source="KM" />
+            <ImageField source="pictures" title="title" />
+            <ImageField source="pictures" src="src" title="title" />
             <EditButton />
         </Datagrid>
     </List>
@@ -27,6 +29,9 @@ const BH347HG_QTitle = ({ record }) => {
 export const BH347HG_QEdit = (props) => (
     <Edit title={<BH347HG_QTitle />} {...props}>
         <SimpleForm>
+ <ImageInput source="pictures" src="src" title="title" label="Related pictures" accept="image/*">
+    <ImageField source="src" title="title" />
+</ImageInput>
             <TextInput source="immatriculation" />
             <TextInput source="marque" />
             <TextInput source="model" />
@@ -37,7 +42,7 @@ export const BH347HG_QEdit = (props) => (
 export const BH347HG_QCreate = (props) => (
     <Create title="blabablabla" {...props}>
         <SimpleForm redirect="show">
-            <DateInput label="Publication date" source="published_at" defaultValue={new Date()} />
+            <DateInput label="Publication date" source="Date ajout" defaultValue={new Date()} />
     <SelectInput
     label="immatriculation"
     source="immatriculation"
@@ -50,7 +55,7 @@ export const BH347HG_QCreate = (props) => (
     <TextInput source="Prenom" validate={[ required ]}  />
 
     <NumberInput source="KM Compteur" validate={[ required, number, minValue(18), maxValue(100000)]} />
-<ImageInput source="pictures" label="Related pictures" accept="image/*">
+ <ImageInput source="pictures" label="Related pictures" accept="image/*">
     <ImageField source="src" title="title" />
 </ImageInput>
 <RadioButtonGroupInput source="Etat carrosserie avant"  choices={[

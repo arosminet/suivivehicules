@@ -10,12 +10,12 @@ const maxValue = max => value =>
 export const BH347HG_IList = (props) => (
     <List {...props}>
         <Datagrid>
-        <ImageField source="src" title="title" />
+            <DateField source="immatriculation" />
             <TextField source="immatriculation" />
-            <ImageField source="src" title="title" />
-            <TextField source="marque" />
-            <TextField source="model" />
+            <TextField source="nom" />
+            <TextField source="prenom" />
             <NumberField source="KM" />
+            <ImageField source="src" src="src" title="title" />
             <EditButton />
         </Datagrid>
     </List>
@@ -28,7 +28,10 @@ const BH347HG_ITitle = ({ record }) => {
 export const BH347HG_IEdit = (props) => (
     <Edit title={<BH347HG_ITitle />} {...props}>
         <SimpleForm>
-    <ImageField source="src" title="title" />
+    <ImageInput source="src" title="TEST" label="title" accept="image/*" multiple={true}>
+    <ImageField source="src" label="titre"/>
+</ImageInput> 
+    <ImageField source="src.rawFile" title="src.title" />
             </SimpleForm>
     </Edit>
 );
@@ -36,10 +39,9 @@ export const BH347HG_IEdit = (props) => (
 export const BH347HG_ICreate = (props) => (
     <Create title="blabablabla" {...props}>
         <SimpleForm redirect="show">
-<ImageInput source="pictures" label="Related pictures" accept="image/*">
-    <ImageField source="src" title="title" />
+<ImageInput source="src" title="titre" label="titre" accept="image/*" multiple={true}>
+    <ImageField source="src" title="titre" />
 </ImageInput>
-
         </SimpleForm>
     </Create>
 );
@@ -48,9 +50,9 @@ export const BH347HG_IShow = (props) => (
     <Show Edit title={<BH-347-HG_JTitle />} {...props}>
         <SimpleShowLayout>
             <TextField source="immatriculation" />
-            <TextField source="Nom" />
+<TextField source="Nom" />
             <TextField source="Prenom" />
-            <ImageField source="src" title="title" />
+            <ImageField source="src" src="src" title="title" />
         </SimpleShowLayout>
     </Show>
 );
